@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Cricket Score Webapp</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <style>
+        body {
+            background-color: darkcyan;
+        }
+
+        center {
+            color: whitesmoke;
+            margin-top: 50px;
+            margin-left: 20px;
+            /* margin: 20px; */
+
+        }
+
+        h4 {
+            color: whitesmoke;
+            /* margin-left: 20px; */
+        }
+
+        label {
+            /* color: whitesmoke; */
+            font-size: medium;
+        }
+
+        .box {
+            max-width: 500px;
+            max-height: 600px;
+            /* background-color: white; */
+            /* margin-left: 300px; */
+            /* margin-top: 20px; */
+            /* margin-bottom: 100px; */
+            /* padding: 20px; */
+            background-color: darkcyan;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <center>
+            <h3>Welcome to Cricket Score Calculator</h3>
+            <p>Enter the fields and predict the score</p>
+        </center>
+        <div class="row">
+            <div class="col-sm-4">
+                <img src="{{ url_for('static', filename='b.jpg') }}" alt="Lights" height="400px" width="300px">
+            </div>
+
+            <div class="col-sm-4">
+                <div class=box>
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <!-- <div class="spinner-border text-primary"></div> -->
+                            <form action="{{ url_for ('predict')}}" method="POST">
+
+
+                                <select class="form-control" id="bat_team" name="bat_team" placeholder="----select---">
+                                    <option value="sbat">---select the batting team---</option>
+                                    <option value="csk">Chennai Super Kings</option>
+                                    <option value="dd">Delhi Daredevils</option>
+                                    <option value="kxp">Kings XI Punjab</option>
+                                    <option value="kkr">Kolkata Knight Riders</option>
+                                    <option value="mi">Mumbai Indians</option>
+                                    <option value="rr">Rajasthan Royals</option>
+                                    <option value="rcb">Royal Challengers Bangalore</option>
+                                    <option value="srh">Sunrisers Hyderabad</option>
+                                </select>
+
+                                <select class="form-control" id="bowl_team" name="bowl_team"
+                                    placeholder="----select---">
+                                    <option value="sbowl">---select the bowling team---</option>
+                                    <option value="csk">Chennai Super Kings</option>
+                                    <option value="dd">Delhi Daredevils</option>
+                                    <option value="kxp">Kings XI Punjab</option>
+                                    <option value="kkr">Kolkata Knight Riders</option>
+                                    <option value="mi">Mumbai Indians</option>
+                                    <option value="rr">Rajasthan Royals</option>
+                                    <option value="rcb">Royal Challengers Bangalore</option>
+                                    <option value="srh">Sunrisers Hyderabad</option>
+                                </select>
+
+                                <select class="form-control" id="venue" name="venue" placeholder="----select---">
+                                    <option vlaue="sv">---select the venue---</option>
+                                    <option vlaue="eg">Eden Gardens</option>
+                                    <option value="mcs">M Chinnaswamy Stadium</option>
+                                    <option value="fsk">Feroz Shah Kotla</option>
+                                    <option value="ws">Wankhede Stadium</option>
+                                    <option value="mcsc">MA Chidambaram Stadium, Chepauk</option>
+                                    <option value="pcas">Punjab Cricket Association Stadium</option>
+                                    <option value="sms">Sawai Mansingh Stadium</option>
+                                    <option value="rgisu">Rajiv Gandhi International Stadium, Uppal</option>
+                                    <option value="spsm">Sardar Patel Stadium, Motera</option>
+                                    <option value="km">Kingsmead</option>
+                                </select>
+
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Enter runs" name='runs'>
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Enter wickets" name='wickets'>
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Enter overs" name='overs'>
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Enter runs_last_5"
+                                        name='runs_last_5'>
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Enter wickets_last_5"
+                                        name='wickets_last_5'>
+                                </div>
+                                <br>
+                                <button class="btn btn-success" type="submit">Total Score</button>
+                            </form>
+                            <h4>{{prediction_text}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- right side gif -->
+            <div class="col-sm-4">
+                <img src="{{ url_for('static', filename='c.jpg') }}" alt="Lights" height="400px" width="300px">
+            </div>
+        </div>
+
+        <!-- Footer -->
+       <div class='footer text-center'>
+        <div class="contact">
+            <a target="_blank" href="https://github.com/anujvyas/IPL-First-Innings-Score-Prediction-Deployment"><i class="fab fa-github fa-lg contact-icon"></i></a>
+            <a target="_blank" href="https://www.linkedin.com/in/anujkvyas"><i class="fab fa-linkedin fa-lg contact-icon"></i></a>
+        </div>
+        <p class='footer-description'>Made with ❤️ by vivek Bhoj.</p>
+
+
+    </div>
+
+</body>
+
+</html>
